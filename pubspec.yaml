@@ -36,6 +36,7 @@ dependencies:
   retrofit: any
   dio: any
   flutter_bloc: any
+  json_annotation: any
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -47,6 +48,7 @@ dev_dependencies:
     sdk: flutter
   retrofit_generator: any
   build_runner: any
+  json_serializable: any
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
