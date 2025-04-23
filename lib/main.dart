@@ -7,6 +7,7 @@ import 'package:newsapp/domain/repository/abstractArticlesRepo.dart';
 import 'package:newsapp/domain/repository/abstractBookmarkRepo.dart';
 import 'package:newsapp/presentation/bloc/articleBloc.dart';
 import 'package:newsapp/presentation/bloc/bookmarkBloc.dart';
+import 'package:newsapp/presentation/bloc/infoBloc.dart';
 import 'package:newsapp/presentation/pages/articleInfo.dart';
 import 'package:newsapp/presentation/pages/articleList.dart';
 import 'package:go_router/go_router.dart';
@@ -33,15 +34,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ArticleBloc(repo: _articleRepo)),
+         BlocProvider(create: (context) => ArticleBloc(repo: _articleRepo)),
          BlocProvider(create: (context) => BookmarkBloc(repo: _bookmarkRepo)),
+         BlocProvider(create: (context) => InfoBloc(repo: _bookmarkRepo)),
       ],
       child: MaterialApp.router(
+        themeMode:  ThemeMode.system,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: ThemeData.light(),
+        darkTheme: ThemeData.dark(),
         routerConfig: _router,
       ),
     );
@@ -60,12 +61,12 @@ class NavScaffold extends StatelessWidget {
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
         onTap: (index) => navigationShell.goBranch(index,initialLocation: index == navigationShell.currentIndex),
-        items: [
-          const BottomNavigationBarItem(
+        items: const [
+          BottomNavigationBarItem(
             icon: Icon(Icons.note),
             label: 'All',
           ),
-          const BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.favorite),
             label: 'Bookmarked',
           ),

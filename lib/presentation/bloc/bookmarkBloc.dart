@@ -17,6 +17,7 @@ class BookmarkBloc extends Bloc<BookmarkEvent,BookmarkState>{
   BookmarkBloc({required this.repo}): super(LoadingGetBookmarkState()){
     on<OnGettingBookmarkEvent>(_onGettingBookmarkEvent);
     on<SaveBookmarkEvent>(_saveBookmarkEvent);
+    on<DeleteBookmarkEvent>(_deleteBookmarkEvent);
   }
 
   _onGettingBookmarkEvent(OnGettingBookmarkEvent event, Emitter<BookmarkState> emitter) async {
@@ -34,6 +35,19 @@ class BookmarkBloc extends Bloc<BookmarkEvent,BookmarkState>{
     try{
       await repo.saveArticle(event.article);
       logger.i("added");
+      final res = await repo.getSavedArticles();
+      logger.i(res);
+      emitter(SucsessGetBookmarkState(res));
+    }
+    catch(e){
+      logger.i("error adding ${e.toString()}");
+      emitter(ErrorGetBookmarkState(e.toString()));
+    }
+  }
+  _deleteBookmarkEvent(DeleteBookmarkEvent event, Emitter<BookmarkState> emitter) async{
+    try{
+      await repo.deleteArticle(event.article);
+      logger.i("deleted");
       final res = await repo.getSavedArticles();
       logger.i(res);
       emitter(SucsessGetBookmarkState(res));

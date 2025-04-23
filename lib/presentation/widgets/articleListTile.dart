@@ -2,6 +2,8 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:newsapp/domain/models/article.dart';
+import 'package:newsapp/presentation/widgets/shimmerWidget.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ArticleListTile extends StatelessWidget {
   ArticleListTile({super.key, required this.item});
@@ -29,13 +31,16 @@ class ArticleListTile extends StatelessWidget {
           height: 70,
           fit: BoxFit.cover,
           imageUrl: item.urlToImage ?? "NO IMAGE",
-          placeholder: (context,string) => Icon(Icons.ac_unit),
+          placeholder: (context,string) => ShimmerWidget(),
+          errorWidget: (context,_,obj) => Image.asset("assets/defaultImage.png",fit: BoxFit.cover,),
         ),
       ),
       onTap: () => context.go('/news/full',extra: item),
       //onTap:  () => BlocProvider.of<BookmarkBloc>(context).add(SaveBookmarkEvent(item)),
     );
   }
+
+
 
   String getPublishWindows(String rawDate){
     DateTime time = DateTime.parse(rawDate);
@@ -49,3 +54,4 @@ class ArticleListTile extends StatelessWidget {
     }
   }
 }
+

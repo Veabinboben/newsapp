@@ -12,3 +12,9 @@ class SaveBookmarkEvent extends BookmarkEvent{
 
   SaveBookmarkEvent(this.article);
 }
+
+class DeleteBookmarkEvent extends BookmarkEvent{
+  final Article article;
+
+  DeleteBookmarkEvent(this.article);
+}

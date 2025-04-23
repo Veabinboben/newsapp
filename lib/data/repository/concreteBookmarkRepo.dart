@@ -30,8 +30,18 @@ class BookmarkRepo implements AbstractBookmarkRepo{
 
   @override
   Future<void> saveArticle(Article article) async  {
-    // TODO: implement saveArticle
     await _database.setValue(article);
+  }
+  @override
+  Future<void> deleteArticle(Article article) async  {
+    // TODO: implement saveArticle
+    if (article.url == null) return;
+    await _database.deleteValue(article.url!);
+  }
+
+  @override
+  Future<Article?> getSavedArticle(Article article) async {
+    return await _database.getValue(article.url ?? "NULL URL", defaultvalue: null);
   }
 
 

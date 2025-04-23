@@ -22,3 +22,9 @@ class SucsessGetBookmarkState extends BookmarkState {
 class SucsessSaveBookmarkState extends BookmarkState {
   SucsessSaveBookmarkState();
 }
+
+class SucsessDeleteBookmarkState extends BookmarkState {
+  SucsessDeleteBookmarkState();
+}
+
+

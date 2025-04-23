@@ -23,13 +23,16 @@ class _ArticleListState extends State<ArticleList> {
 
   late final ArticleBloc _bloc = BlocProvider.of<ArticleBloc>(context);
   late final StreamSubscription<List<ConnectivityResult>> subscription;
-  final Tabs = ["Politics","Technology","Science","War"];
+  final Tabs = ["Politics","Technology","Science"];
 
   @override
   void initState() {
     _bloc.add(OnGettingArticleEvent(Tabs[0]));
     subscription = Connectivity().onConnectivityChanged.listen((List<ConnectivityResult> result) {
-      print(result.contains(ConnectivityResult.mobile) || result.contains(ConnectivityResult.wifi));
+      final res = result.contains(ConnectivityResult.mobile) || result.contains(ConnectivityResult.wifi);
+      if (res == true){
+        _bloc.add(OnGettingArticleEvent(Tabs[0]));
+      }
     });
     super.initState();
   }
@@ -68,8 +71,15 @@ class _ArticleListState extends State<ArticleList> {
               if (state is SuccessGetArticleState){
                 return ArticleListWidget(articles: state.articles ?? [],isLive: true,);
               }
-              else{
-                return Text("baaad");
+              else if (state is LoadingGetArticleState){
+                return Center(
+                  child: CircularProgressIndicator(),
+                );
+              }
+              else {
+                return Center(
+                  child: Text("Could not load. Check internet connection"),
+                );
               }
             },
           ),
