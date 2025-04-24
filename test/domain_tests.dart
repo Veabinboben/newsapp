@@ -2,8 +2,6 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 import 'package:newsapp/domain/models/article.dart';
-import 'package:newsapp/domain/models/source.dart';
-import 'package:newsapp/domain/repository/abstractArticlesRepo.dart';
 import 'package:newsapp/domain/repository/abstractBookmarkRepo.dart';
 
 @GenerateMocks([AbstractBookmarkRepo])

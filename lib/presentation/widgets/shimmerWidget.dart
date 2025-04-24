@@ -1,5 +1,3 @@
-
-
 import 'package:flutter/material.dart';
 
 class ShimmerWidget extends StatefulWidget {
@@ -40,10 +38,10 @@ class _ShimmerWidgetState extends State<ShimmerWidget>
             decoration: BoxDecoration(
               color: Colors.grey[300],
               gradient: LinearGradient(
-                transform: GradientRotation(1),
+                transform: const GradientRotation(1),
                 begin: Alignment(-1.0 + _animation.value, 0),
                 end: Alignment(1.0 + _animation.value, 0),
-                colors: [Colors.grey, Colors.white, Colors.grey],
+                colors: const [Colors.grey, Colors.white, Colors.grey],
               ),
             ),
           );

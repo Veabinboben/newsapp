@@ -23,26 +23,28 @@ Future<void> main() async {
   // Init Databases
   await HiveInjector.setup();
   // Run application
-  runApp( MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-   MyApp({super.key});
+  MyApp({super.key});
 
-  AbstractArticlesRepo _articleRepo = ArticlesRepo();
-  AbstractBookmarkRepo _bookmarkRepo = BookmarkRepo();
-  AbstractCachedArticlesRepo _articleCachedRepo = ArticleCacheRepo();
+  final AbstractArticlesRepo _articleRepo = ArticlesRepo();
+  final AbstractBookmarkRepo _bookmarkRepo = BookmarkRepo();
+  final AbstractCachedArticlesRepo _articleCachedRepo = ArticleCacheRepo();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-         BlocProvider(create: (context) => ArticleBloc(repo: _articleRepo,cachedRepo: _articleCachedRepo)),
-         BlocProvider(create: (context) => BookmarkBloc(repo: _bookmarkRepo)),
-         BlocProvider(create: (context) => InfoBloc(repo: _bookmarkRepo)),
+        BlocProvider(
+            create: (context) => ArticleBloc(
+                repo: _articleRepo, cachedRepo: _articleCachedRepo)),
+        BlocProvider(create: (context) => BookmarkBloc(repo: _bookmarkRepo)),
+        BlocProvider(create: (context) => InfoBloc(repo: _bookmarkRepo)),
       ],
       child: MaterialApp.router(
-        themeMode:  ThemeMode.system,
+        themeMode: ThemeMode.system,
         title: 'News',
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
@@ -53,7 +55,7 @@ class MyApp extends StatelessWidget {
 }
 
 class NavScaffold extends StatelessWidget {
-  const NavScaffold({super.key,required this.navigationShell});
+  const NavScaffold({super.key, required this.navigationShell});
 
   final StatefulNavigationShell navigationShell;
 
@@ -63,7 +65,8 @@ class NavScaffold extends StatelessWidget {
       body: navigationShell,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: navigationShell.currentIndex,
-        onTap: (index) => navigationShell.goBranch(index,initialLocation: index == navigationShell.currentIndex),
+        onTap: (index) => navigationShell.goBranch(index,
+            initialLocation: index == navigationShell.currentIndex),
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.note),
@@ -73,10 +76,8 @@ class NavScaffold extends StatelessWidget {
             icon: Icon(Icons.favorite),
             label: 'Bookmarked',
           ),
-      ],
-    ) ,
+        ],
+      ),
     );
   }
 }
-
-

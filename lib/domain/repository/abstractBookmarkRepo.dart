@@ -1,6 +1,6 @@
 import 'package:newsapp/domain/models/article.dart';
 
-abstract class AbstractBookmarkRepo{
+abstract class AbstractBookmarkRepo {
   Future<List<Article>> getSavedArticles();
   Future<Article?> getSavedArticle(Article article);
   Future<void> saveArticle(Article article);

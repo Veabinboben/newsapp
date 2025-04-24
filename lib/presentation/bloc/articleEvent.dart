@@ -6,10 +6,10 @@ abstract class ArticleEvent {
 
 class OnGettingArticleEvent extends ArticleEvent {
   final String theme;
-  final int page ;
-  final int pageSize ;
+  final int page;
+  final int pageSize;
 
-  OnGettingArticleEvent(this.theme,{this.page = 1, this.pageSize = 50});
+  OnGettingArticleEvent(this.theme, {this.page = 1, this.pageSize = 50});
 }
 
 class OnGettingCachedArticleEvent extends ArticleEvent {
@@ -21,6 +21,5 @@ class OnGettingCachedArticleEvent extends ArticleEvent {
 class OnAppendArticleEvent extends ArticleEvent {
   OnAppendArticleEvent();
 }
-
 
 class TryGetArticleEvent extends ArticleEvent {}

@@ -5,7 +5,7 @@ part 'source.g.dart';
 
 @JsonSerializable()
 @HiveType(typeId: 0)
-class Source{
+class Source {
   @HiveField(0)
   String? id;
   @HiveField(1)

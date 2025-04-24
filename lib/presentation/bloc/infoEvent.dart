@@ -4,7 +4,7 @@ abstract class InfoEvent {
   const InfoEvent();
 }
 
-class CheckExistenceEvent extends InfoEvent{
+class CheckExistenceEvent extends InfoEvent {
   final Article article;
 
   CheckExistenceEvent(this.article);

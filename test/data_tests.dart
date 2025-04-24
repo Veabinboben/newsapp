@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -6,7 +5,6 @@ import 'package:mockito/mockito.dart';
 import 'package:dio/dio.dart';
 import 'package:newsapp/data/models/articleResponseDTO.dart';
 import 'package:newsapp/data/sources/articleApi.dart'; // Adjust import
-import 'package:newsapp/domain/models/article.dart';
 
 @GenerateMocks([Dio])
 

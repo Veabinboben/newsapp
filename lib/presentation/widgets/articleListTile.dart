@@ -3,26 +3,35 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:newsapp/domain/models/article.dart';
 import 'package:newsapp/presentation/widgets/shimmerWidget.dart';
-import 'package:shimmer/shimmer.dart';
 
 class ArticleListTile extends StatelessWidget {
-  ArticleListTile({super.key, required this.item});
+  const ArticleListTile({super.key, required this.item});
 
-  Article item;
+  final Article item;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Column(crossAxisAlignment: CrossAxisAlignment.start,
+      title: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(item.source!.name ?? "NULL SOURCE",
-            style: TextStyle(fontSize: 7, fontStyle: FontStyle.italic),),
-          Text(item.title ?? "NULL TITLE",
-            style: TextStyle( fontWeight: FontWeight.bold,),)
-        ],),
+          Text(
+            item.source!.name ?? "NULL SOURCE",
+            style: const TextStyle(fontSize: 7, fontStyle: FontStyle.italic),
+          ),
+          Text(
+            item.title ?? "NULL TITLE",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          )
+        ],
+      ),
       subtitle: Text(
-        item.publishedAt != null ? getPublishWindows(item.publishedAt!) : "NULL TIME",
-        style: TextStyle(fontSize: 7),
+        item.publishedAt != null
+            ? getPublishWindows(item.publishedAt!)
+            : "NULL TIME",
+        style: const TextStyle(fontSize: 7),
       ),
       trailing: ClipRRect(
         borderRadius: BorderRadius.circular(20),
@@ -31,27 +40,26 @@ class ArticleListTile extends StatelessWidget {
           height: 70,
           fit: BoxFit.cover,
           imageUrl: item.urlToImage ?? "NO IMAGE",
-          placeholder: (context,string) => ShimmerWidget(),
-          errorWidget: (context,_,obj) => Image.asset("assets/defaultImage.png",fit: BoxFit.cover,),
+          placeholder: (context, string) => ShimmerWidget(),
+          errorWidget: (context, _, obj) => Image.asset(
+            "assets/defaultImage.png",
+            fit: BoxFit.cover,
+          ),
         ),
       ),
-      onTap: () => context.go('/news/full',extra: item),
+      onTap: () => context.go('/news/full', extra: item),
       //onTap:  () => BlocProvider.of<BookmarkBloc>(context).add(SaveBookmarkEvent(item)),
     );
   }
 
-
-
-  String getPublishWindows(String rawDate){
+  String getPublishWindows(String rawDate) {
     DateTime time = DateTime.parse(rawDate);
     DateTime now = DateTime.now();
     final diff = now.difference(time);
     if (diff.inHours < 24) {
       return "${diff.inHours.toString()}h";
-    }
-    else{
+    } else {
       return "${diff.inDays.toString()}d";
     }
   }
 }
-

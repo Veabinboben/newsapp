@@ -1,13 +1,13 @@
 part of 'articleBloc.dart';
 
-
 abstract class ArticleState {
   List<Article>? articles;
-  int page ;
-  int pageSize ;
+  int page;
+  int pageSize;
   String theme;
 
-  ArticleState(this.articles, {this.pageSize = 50, this.page = 1, this.theme = "any"} );
+  ArticleState(this.articles,
+      {this.pageSize = 50, this.page = 1, this.theme = "any"});
 }
 
 class InitialState extends ArticleState {
@@ -24,9 +24,11 @@ class ErrorGetArticleState extends ArticleState {
 }
 
 class SuccessGetArticleState extends ArticleState {
-  SuccessGetArticleState(List<Article> super.articles, {super.pageSize = 50, super.page = 1, super.theme = "any"});
+  SuccessGetArticleState(List<Article> super.articles,
+      {super.pageSize = 50, super.page = 1, super.theme = "any"});
 }
 
 class SuccessGetCachedArticleState extends ArticleState {
-  SuccessGetCachedArticleState(List<Article> super.articles, {super.pageSize = 50, super.page = 1, super.theme = "any"});
+  SuccessGetCachedArticleState(List<Article> super.articles,
+      {super.pageSize = 50, super.page = 1, super.theme = "any"});
 }

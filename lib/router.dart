@@ -10,20 +10,19 @@ final GoRouter _router = GoRouter(
           StatefulShellBranch(
             routes: [
               GoRoute(
-                name: 'news',
-                path: '/news',
-                builder: (context, state) => const ArticleList(),
-                routes: [
-                  GoRoute(
+                  name: 'news',
+                  path: '/news',
+                  builder: (context, state) => const ArticleList(),
+                  routes: [
+                    GoRoute(
                       name: 'full',
                       path: '/full',
                       builder: (context, state) {
                         final article = state.extra as Article;
                         return ArticleInfo(article: article);
                       },
-                  ),
-                ]
-              ),
+                    ),
+                  ]),
             ],
           ),
           StatefulShellBranch(
@@ -35,8 +34,7 @@ final GoRouter _router = GoRouter(
               ),
             ],
           ),
-        ]
-    )
+        ])
     // GoRoute(
     //   name: 'details',
     //   path: '/details',

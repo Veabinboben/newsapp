@@ -6,7 +6,7 @@ part 'article.g.dart';
 
 @JsonSerializable()
 @HiveType(typeId: 1)
-class Article{
+class Article {
   @HiveField(0)
   Source? source;
   @HiveField(1)
@@ -27,7 +27,8 @@ class Article{
   Article(this.source, this.author, this.title, this.description, this.url,
       this.urlToImage, this.publishedAt, this.content);
 
-  factory Article.fromJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
+  factory Article.fromJson(Map<String, dynamic> json) =>
+      _$ArticleFromJson(json);
 
   Map<String, dynamic> toJson() => _$ArticleToJson(this);
 }

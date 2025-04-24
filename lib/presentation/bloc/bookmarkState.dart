@@ -1,6 +1,5 @@
 part of 'bookmarkBloc.dart';
 
-
 abstract class BookmarkState {
   const BookmarkState();
 }
@@ -26,5 +25,3 @@ class SucsessSaveBookmarkState extends BookmarkState {
 class SucsessDeleteBookmarkState extends BookmarkState {
   SucsessDeleteBookmarkState();
 }
-
-
