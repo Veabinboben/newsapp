@@ -26,3 +26,7 @@ class ErrorGetArticleState extends ArticleState {
 class SuccessGetArticleState extends ArticleState {
   SuccessGetArticleState(List<Article> super.articles, {super.pageSize = 50, super.page = 1, super.theme = "any"});
 }
+
+class SuccessGetCachedArticleState extends ArticleState {
+  SuccessGetCachedArticleState(List<Article> super.articles, {super.pageSize = 50, super.page = 1, super.theme = "any"});
+}

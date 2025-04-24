@@ -29,6 +29,5 @@ class Article{
 
   factory Article.fromJson(Map<String, dynamic> json) => _$ArticleFromJson(json);
 
-  // A method that converts a User instance into a map.
   Map<String, dynamic> toJson() => _$ArticleToJson(this);
 }

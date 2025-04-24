@@ -28,8 +28,6 @@ class ArticlesRepo implements AbstractArticlesRepo{
       return res.articles;
     }
     catch(e){
-      //FIXME
-      print(e);
       rethrow;
     }
   }

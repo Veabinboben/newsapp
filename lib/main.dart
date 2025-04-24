@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:newsapp/data/repository/concreteArticleRepo.dart';
 import 'package:newsapp/data/repository/concreteBookmarkRepo.dart';
+import 'package:newsapp/data/repository/concreteCachedArticleRepo.dart';
 import 'package:newsapp/domain/models/article.dart';
 import 'package:newsapp/domain/repository/abstractArticlesRepo.dart';
 import 'package:newsapp/domain/repository/abstractBookmarkRepo.dart';
+import 'package:newsapp/domain/repository/abstractCachedArticleRepo.dart';
 import 'package:newsapp/presentation/bloc/articleBloc.dart';
 import 'package:newsapp/presentation/bloc/bookmarkBloc.dart';
 import 'package:newsapp/presentation/bloc/infoBloc.dart';
@@ -29,18 +31,19 @@ class MyApp extends StatelessWidget {
 
   AbstractArticlesRepo _articleRepo = ArticlesRepo();
   AbstractBookmarkRepo _bookmarkRepo = BookmarkRepo();
+  AbstractCachedArticlesRepo _articleCachedRepo = ArticleCacheRepo();
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-         BlocProvider(create: (context) => ArticleBloc(repo: _articleRepo)),
+         BlocProvider(create: (context) => ArticleBloc(repo: _articleRepo,cachedRepo: _articleCachedRepo)),
          BlocProvider(create: (context) => BookmarkBloc(repo: _bookmarkRepo)),
          BlocProvider(create: (context) => InfoBloc(repo: _bookmarkRepo)),
       ],
       child: MaterialApp.router(
         themeMode:  ThemeMode.system,
-        title: 'Flutter Demo',
+        title: 'News',
         theme: ThemeData.light(),
         darkTheme: ThemeData.dark(),
         routerConfig: _router,

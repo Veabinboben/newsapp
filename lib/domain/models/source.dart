@@ -15,6 +15,5 @@ class Source{
 
   factory Source.fromJson(Map<String, dynamic> json) => _$SourceFromJson(json);
 
-  // A method that converts a User instance into a map.
   Map<String, dynamic> toJson() => _$SourceToJson(this);
 }

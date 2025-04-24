@@ -22,7 +22,6 @@ class BookmarkRepo implements AbstractBookmarkRepo{
     }
     catch (e){
       logger.i(e.toString());
-      // FIXME not so great;
       return [];
     }
 
@@ -34,7 +33,6 @@ class BookmarkRepo implements AbstractBookmarkRepo{
   }
   @override
   Future<void> deleteArticle(Article article) async  {
-    // TODO: implement saveArticle
     if (article.url == null) return;
     await _database.deleteValue(article.url!);
   }

@@ -13,13 +13,7 @@ abstract class ArticleHttpClient
 {
   factory ArticleHttpClient(Dio dio, {String baseUrl}) = _ArticleHttpClient;
 
-  // @POST('/auth/register')
-  // Future<String> register(@Body() AuthDTO dto );
-  // @POST('/auth/login')
-  // Future<HttpResponse<String>> login(@Body() AuthDTO dto );
    @GET('/everything')
    Future<ArticleResponseDTO> getArticles(@Queries() Map<String, dynamic> queries);
-  // @GET('/auth/refresh')
-  // Future<HttpResponse> refresh(@Header("Cookie") refresh_token);
 
 }

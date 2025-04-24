@@ -68,8 +68,8 @@ class _ArticleListState extends State<ArticleList> {
           body: BlocBuilder<ArticleBloc,ArticleState>(
             bloc: _bloc,
             builder: (context, state){
-              if (state is SuccessGetArticleState){
-                return ArticleListWidget(articles: state.articles ?? [],isLive: true,);
+              if (state is SuccessGetArticleState || (state is SuccessGetCachedArticleState && state.articles!.isNotEmpty)){
+                return ArticleListWidget(articles: state.articles ?? [],isLive: (state is SuccessGetArticleState),);
               }
               else if (state is LoadingGetArticleState){
                 return Center(

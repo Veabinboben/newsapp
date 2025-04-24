@@ -11,14 +11,10 @@ class ArticleDb
 
   ArticleDb();
 
-
-  //TODO implementation is not correct redo
   Future<Article> getValue<T>(String url, {Article? defaultvalue}) async =>  await _box.get(url,defaultValue: defaultvalue,);
   Future<void> setValue<T>(Article value) async => await _box.put(value.url,value);
   Future<void> deleteValue<T> (String url) async => await _box.delete(url);
   Future<void> clearAll() async => await _box.clear();
   Future<List<Article>> getAll() async => await (_box.values.cast<Article>().toList());
-
-
 
 }

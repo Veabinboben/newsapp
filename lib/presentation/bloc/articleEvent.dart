@@ -12,6 +12,12 @@ class OnGettingArticleEvent extends ArticleEvent {
   OnGettingArticleEvent(this.theme,{this.page = 1, this.pageSize = 50});
 }
 
+class OnGettingCachedArticleEvent extends ArticleEvent {
+  final String theme;
+
+  OnGettingCachedArticleEvent(this.theme);
+}
+
 class OnAppendArticleEvent extends ArticleEvent {
   OnAppendArticleEvent();
 }
